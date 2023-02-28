@@ -20,8 +20,8 @@ const Header = () => {
         <header className="header_section">
           <div className="container">
             <nav className="navbar navbar-expand-lg custom_nav-container">
-              <a href="/">
-                <Image src={logo} height={110} width={110} alt="logo" />
+              <a  href="/">
+                <Image className="mb-2" src={logo} height={110} width={110} alt="logo" />
               </a>
 
               <button
@@ -37,7 +37,7 @@ const Header = () => {
               </button>
 
               <div
-                className="collapse navbar-collapse mb-4"
+                className="collapse navbar-collapse mb-5"
                 id="navbarSupportedContent"
               >
                 <ul className="navbar-nav mx-auto">
