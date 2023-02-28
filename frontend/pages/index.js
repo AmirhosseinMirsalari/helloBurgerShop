@@ -1,4 +1,5 @@
 import Features from "@/components/Features";
+import ProductsTab from "@/components/product/ProductsTab";
 import axios from "axios";
 import { handleError } from "lib/helper";
 import { useEffect } from "react";
@@ -10,7 +11,10 @@ const Home = ({ productsTab, error }) => {
   }, [error])
 
   return (
+    <>
     <Features />
+    {productsTab && <ProductsTab tabs={productsTab} />}
+  </>
   )
 }
 
@@ -19,7 +23,7 @@ export default Home;
 export async function getServerSideProps() {
   try {
     const res = await axios.get("/products/products-tabs")
-    console.log(res.data.data);
+    // console.log(res.data.data);
     return {
       props: {
         productsTab: res.data.data
