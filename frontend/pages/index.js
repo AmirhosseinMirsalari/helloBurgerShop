@@ -1,9 +1,8 @@
+import Features from "@/components/Features";
+
 const Home = () => {
   return (
-    <div>
-      Home Page
-      هلو برگر
-    </div>
+    <Features />
   )
 }
 
