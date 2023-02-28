@@ -1,3 +1,7 @@
+const numberFormat = (number) => {
+    return new Intl.NumberFormat().format(number)
+}
+
 const handleError = (err) => {
     if (err.response) {
         console.log('Error Response', err.response.data)
@@ -22,4 +26,4 @@ const handleError = (err) => {
     // return 'خطای سرور، دوباره تلاش کنید'
 }
 
-export { handleError }
+export { handleError,numberFormat }
