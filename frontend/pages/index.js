@@ -1,11 +1,13 @@
 import About from "@/components/About";
-import ContactForm from "@/components/ContactForm";
+import ContactForm from "@/components/contact/ContactForm";
 import Features from "@/components/Features";
 import ProductsTab from "@/components/product/ProductsTab";
 import axios from "axios";
 import { handleError } from "lib/helper";
+import dynamic from "next/dynamic";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
+const Map = dynamic(() => import('@/components/contact/Map'), { ssr: false })
 
 const Home = ({ productsTab, error }) => {
   useEffect(() => {
@@ -31,8 +33,8 @@ const Home = ({ productsTab, error }) => {
               </div>
             </div>
             <div className="col-md-6">
-              <div className="map_container ">
-                {/* <div id="map" style="height: 345px;"></div> */}
+            <div className="map_container ">
+                <Map />
               </div>
             </div>
           </div>

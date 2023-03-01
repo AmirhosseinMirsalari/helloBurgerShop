@@ -39,7 +39,7 @@ const ContactForm = () => {
                 <input onChange={(e) => setName(e.target.value)} value={name} type="text" className="form-control" placeholder="نام و نام خانوادگی" />
             </div>
             <div>
-                <input onChange={(e) => setEmail(e.target.value)} value={email} type="text" className="form-control" placeholder="ایمیل" />
+                <input onChange={(e) => setEmail(e.target.value)} value={email} type="email" className="form-control" placeholder="ایمیل" />
             </div>
             <div>
                 <input onChange={(e) => setSubject(e.target.value)} value={subject} type="text" className="form-control" placeholder="موضوع پیام" />
