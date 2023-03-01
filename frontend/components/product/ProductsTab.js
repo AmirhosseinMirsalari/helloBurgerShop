@@ -1,4 +1,5 @@
 import Product from "./Product";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 const ProductsTab = ({ tabs }) => {
     return (
@@ -10,25 +11,31 @@ const ProductsTab = ({ tabs }) => {
                     </h2>
                 </div>
 
-                <ul className="filters_menu">
-                    {tabs.tabList.map((list, index) => (
-                        <li key={index}>{list}</li>
-                    ))}
-                    {/* <li className="active">پیتزا</li>
-                    <li>پیش غذا و سالاد</li> */}
-                </ul>
-
-                <div className="filters-content">
-                    {tabs.tabPanel.map((panel, index) => (
-                        <div key={index} className="row grid">
-                            {panel.map((product, index) => (
-                                <div key={index} className="col-sm-6 col-lg-4">
-                                    <Product product={product} />
-                                </div>
+                <Tabs selectedTabClassName={"active"}>
+                    <TabList>
+                        <ul className="filters_menu">
+                            {tabs.tabList.map((list, index) => (
+                                <Tab key={index}>{list}</Tab>
                             ))}
-                        </div>
-                    ))}
-                </div>
+                        </ul>
+                    </TabList>
+
+                    <div className="filters-content">
+                        {tabs.tabPanel.map((panel, index) => (
+                            <TabPanel key={index}>
+                                <div className="row grid">
+                                    {panel.map((product, index) => (
+                                        <div key={index} className="col-sm-6 col-lg-4">
+                                            <Product product={product} />
+                                        </div>
+                                    ))}
+                                </div>
+                            </TabPanel>
+                        ))}
+                    </div>
+                </Tabs>
+
+
                 <div className="btn-box">
                     <a href="">
                         مشاهده بیشتر
