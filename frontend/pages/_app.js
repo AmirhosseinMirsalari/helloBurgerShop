@@ -8,7 +8,7 @@ import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
 import Footer from '@/components/layout/Footer';
 import NProgress from 'nprogress'
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_BACKEND_API_URL;
@@ -18,9 +18,18 @@ Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
   useEffect(() => {
     import('bootstrap/dist/js/bootstrap.bundle.js')
   }, []);
+  
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [router]);
 
   return (
     <>
