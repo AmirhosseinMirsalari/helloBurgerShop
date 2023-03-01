@@ -16,6 +16,21 @@ const MenuPage = ({ products, categories, error }) => {
     error && toast.error(error);
   }, [error]);
 
+  useEffect(() => {
+    router.beforePopState(({ as }) => {
+        if (as !== router.asPath) {
+            // Will run when leaving the current page; on back/forward actions
+            // Add your logic here, like toggling the modal state
+            router.reload()
+        }
+        return true;
+    });
+
+    return () => {
+        router.beforePopState(() => true);
+    };
+}, [router]);
+
   const handleFilter = async (value) => {
     let query = { ...router.query, ...value };
 
