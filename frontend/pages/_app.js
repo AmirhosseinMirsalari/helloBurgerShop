@@ -11,7 +11,7 @@ import NProgress from 'nprogress'
 import Router from 'next/router';
 
 
-axios.defaults.baseURL = process.env.BACKEND_API_URL;
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_BACKEND_API_URL;
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())

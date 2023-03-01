@@ -1,13 +1,37 @@
 import { handleError } from "lib/helper";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify"
 import axios from "axios"
 import Product from "@/components/product/Product";
+import { useRouter } from "next/router";
 
 const MenuPage = ({ products, categories, error }) => {
+    const [productList, setProductList] = useState(products);
+    const [loading, setLoading] = useState(false);
+
+    const router = useRouter();
+
+
     useEffect(() => {
         error && toast.error(error)
     }, [error])
+
+    const handleFilter = async (value) => {
+
+        try {
+            setLoading(true)
+
+            const res = await axios.get(`/menu?${new URLSearchParams(value).toString()}`)
+            setProductList(res.data.data);
+            console.log(res.data.data);
+            router.push(`/menu?${new URLSearchParams(value).toString()}`, undefined, { shallow: true })
+
+        } catch (err) {
+            toast.error(handleError(err))
+        } finally {
+            setLoading(false)
+        }
+    }
 
     return (
         <section className="food_section layout_padding">
@@ -68,24 +92,31 @@ const MenuPage = ({ products, categories, error }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-sm-12 col-lg-9">
-                        <div className="row gx-3">
-                            {products && products.products.map((product, index) => (
-                                <div key={index} className="col-sm-6 col-lg-4">
-                                    <Product product={product} />
-                                </div>
-                            ))}
-                        </div>
-                        <nav className="d-flex justify-content-center mt-5">
-                            <ul className="pagination">
-                                {products && products.meta.links.slice(1, -1).map((link, index) => (
-                                    <li key={index} className={link.active ? 'page-item active' : 'page-item'}>
-                                        <button className="page-link">{link.label}</button>
-                                    </li>
+                    {loading ?
+                        (<div className="col-sm-12 col-lg-9">
+                            <div className="d-flex justify-content-center align-items-center h-100">
+                                <div className="spinner-border"></div>
+                            </div>
+                        </div>)
+                        :
+                        (<div className="col-sm-12 col-lg-9">
+                            <div className="row gx-3">
+                                {productList && productList.products.map((product, index) => (
+                                    <div key={index} className="col-sm-6 col-lg-4">
+                                        <Product product={product} />
+                                    </div>
                                 ))}
-                            </ul>
-                        </nav>
-                    </div>
+                            </div>
+                            <nav className="d-flex justify-content-center mt-5">
+                                <ul className="pagination">
+                                    {productList && productList.meta.links.slice(1, -1).map((link, index) => (
+                                        <li key={index} className={link.active ? 'page-item active' : 'page-item'}>
+                                            <button onClick={() => handleFilter({ page: link.label })} className="page-link">{link.label}</button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </nav>
+                        </div>)}
                 </div>
             </div>
         </section>
@@ -94,11 +125,11 @@ const MenuPage = ({ products, categories, error }) => {
 
 export default MenuPage;
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ resolvedUrl }) {
     try {
-        const res = await axios.get("/menu")
+        const res = await axios.get(`${resolvedUrl}`)
         const resCate = await axios.get("/categories")
-        // console.log(res.data.data);
+
         return {
             props: {
                 products: res.data.data,
