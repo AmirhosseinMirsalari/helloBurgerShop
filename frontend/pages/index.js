@@ -1,3 +1,4 @@
+import About from "@/components/About";
 import Features from "@/components/Features";
 import ProductsTab from "@/components/product/ProductsTab";
 import axios from "axios";
@@ -14,6 +15,8 @@ const Home = ({ productsTab, error }) => {
     <>
     <Features />
     {productsTab && <ProductsTab tabs={productsTab} />}
+    <About />
+
   </>
   )
 }
