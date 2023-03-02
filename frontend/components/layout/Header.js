@@ -101,7 +101,7 @@ const Header = () => {
                       </span>
                     </a>
                   </Link>
-                  <Link href="/login">
+                  <Link href="/auth/login">
                     <a className="btn-auth">ورود به حساب کاربری</a>
                   </Link>
                 </div>
