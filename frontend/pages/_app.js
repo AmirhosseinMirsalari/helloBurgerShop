@@ -9,6 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import Footer from '@/components/layout/Footer';
 import NProgress from 'nprogress'
 import Router, { useRouter } from 'next/router';
+import { AuthProvider } from 'context/AuthContext';
 
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_BACKEND_API_URL;
@@ -32,12 +33,12 @@ function MyApp({ Component, pageProps }) {
   }, [router]);
 
   return (
-    <>
+    <AuthProvider>
       <Header />
       <Component {...pageProps} />
       <Footer />
       <ToastContainer />
-    </>
+    </AuthProvider>
   )
 }
 
