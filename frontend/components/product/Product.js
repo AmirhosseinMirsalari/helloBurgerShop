@@ -1,5 +1,6 @@
 import { numberFormat } from "lib/helper";
 import Image from "next/image";
+import Link from "next/link";
 
 const Product = ({ product }) => {
     return (
@@ -10,7 +11,10 @@ const Product = ({ product }) => {
                 </div>
                 <div className="detail-box">
                     <h5>
+                        <Link href={`/products/${product.slug}`}>
                         {product.name}
+                        </Link>
+                        
                     </h5>
                     <p>
                         {product.description}

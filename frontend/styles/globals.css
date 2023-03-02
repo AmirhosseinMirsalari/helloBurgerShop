@@ -1184,6 +1184,11 @@ a:focus {
   height: 70vh !important;
 }
 
+.food_section .box .detail-box a {
+  font-weight: 600;
+  color: #fff;
+}
+
 /* Responsive */
 @media (max-width: 1300px) {
 }
@@ -1288,6 +1293,7 @@ a:focus {
     width: 50%;
   }
 }
+
 .Toastify__toast-body {
   font-family: "Vazir" !important;
   direction: rtl;
