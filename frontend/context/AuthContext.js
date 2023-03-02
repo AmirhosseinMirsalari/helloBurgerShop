@@ -50,7 +50,34 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
-    const checkUserLoggedIn = async () => {
+    const resendOtp = async (otp) => {
+        try {
+            const res = await axios.post(`${process.env.NEXT_PUBLIC_APP_API_URL}/auth/resendOtp`)
+
+            toast.success('کد ورود دوباره برای شما ارسال شد');
+
+        } catch (err) {
+            toast.error(handleError(err))
+        }
+    }
+
+    const logout = async () => {
+        try {
+            setLoading(true)
+
+            const res = await axios.post(`${process.env.NEXT_PUBLIC_APP_API_URL}/auth/logout`)
+
+            setUser(null);
+            router.push('/')
+
+        } catch (err) {
+            toast.error(handleError(err))
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    const checkUserLoggedIn = async (otp) => {
         try {
             const res = await axios.post(`${process.env.NEXT_PUBLIC_APP_API_URL}/auth/me`)
 
@@ -61,19 +88,8 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
-    const resendOtp = async () => {
-        try {
-            const res = await axios.post(`${process.env.NEXT_PUBLIC_APP_API_URL}/auth/resendOtp`)
-
-            toast.success('کد ورود دوباره برای شما ارسال شد');
-            
-        } catch (err) {
-            toast.error(handleError(err))
-        }
-    }
-
     return (
-        <AuthContext.Provider value={{ user, login, checkOtp, loading, resendOtp }}>
+        <AuthContext.Provider value={{ user, login, logout, checkOtp, resendOtp, loading }}>
             {children}
         </AuthContext.Provider>
     )
