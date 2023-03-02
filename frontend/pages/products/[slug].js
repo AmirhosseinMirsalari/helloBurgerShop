@@ -1,41 +1,50 @@
-import { handleError } from "lib/helper";
-import { useEffect } from "react"
+import { handleError, numberFormat, salePercent } from "lib/helper";
+import { useEffect, useState } from "react"
 import { toast } from "react-toastify";
 import axios from "axios";
+import Image from "next/image";
 
 const ProductPage = ({ product, error }) => {
+    const [quantity, setQuantity] = useState(1);
+
     useEffect(() => {
         error && toast.error(error)
     }, [error])
 
     return (
         <>
-            <section className="single_page_section layout_padding">
+            {product && <section className="single_page_section layout_padding">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-10 offset-md-1">
                             <div className="row gy-5">
                                 <div className="col-sm-12 col-lg-6">
-                                    <h3 className="fw-bold mb-4">پیتزا پپرونی</h3>
+                                    <h3 className="fw-bold mb-4">{product.name}</h3>
                                     <h5 className="mb-3">
-                                        <del>165,000</del>
-                                        135,000
-                                        تومان
-                                        <div className="text-danger fs-6">
-                                            10% تخفیف
-                                        </div>
+                                        {product.is_sale ? (
+                                            <>
+                                                <span>{numberFormat(product.sale_price)}</span>
+                                                <del className="me-1">{numberFormat(product.price)}</del>
+                                            </>
+                                        ) : (
+                                            <span>{numberFormat(product.price)}</span>
+                                        )}
+                                        <span>تومان</span>
+
+                                        {product.is_sale && <div className="text-danger fs-6">
+                                            {salePercent(product.price, product.sale_price)}% تخفیف
+                                        </div>}
                                     </h5>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                                        است.</p>
+                                    <p>{product.description}</p>
 
                                     <div className="mt-5 d-flex">
                                         <button className="btn-add">افزودن به سبد خرید</button>
                                         <div className="input-counter ms-4">
-                                            <span className="plus-btn">
+                                            <span className="plus-btn" onClick={() => quantity < product.quantity && setQuantity(prevQty => prevQty + 1)}>
                                                 +
                                             </span>
-                                            <div className="input-number">1</div>
-                                            <span className="minus-btn">
+                                            <div className="input-number">{quantity}</div>
+                                            <span className="minus-btn" onClick={() => quantity > 1 && setQuantity(prevQty => prevQty - 1)}>
                                                 -
                                             </span>
                                         </div>
@@ -47,21 +56,22 @@ const ProductPage = ({ product, error }) => {
                                             <button type="button" data-bs-target="#carouselExampleIndicators"
                                                 data-bs-slide-to="0" className="active" aria-current="true"
                                                 aria-label="Slide 1"></button>
-                                            <button type="button" data-bs-target="#carouselExampleIndicators"
-                                                data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                            <button type="button" data-bs-target="#carouselExampleIndicators"
-                                                data-bs-slide-to="2" aria-label="Slide 3"></button>
+
+                                            {product.images.map((image, index) => (
+                                                <button key={index} type="button" data-bs-target="#carouselExampleIndicators"
+                                                    data-bs-slide-to={index + 1} aria-label="Slide 2"></button>
+                                            ))}
                                         </div>
                                         <div className="carousel-inner">
                                             <div className="carousel-item active">
-                                                <img src="./images/p1.jpg" className="d-block w-100" alt="..." />
+                                                <Image src={product.primary_image} className="d-block w-100" placeholder='blur' blurDataURL={product.primary_image_blurDataURL} priority={true} width={464} height={309} layout="responsive" alt="primary-image" />
                                             </div>
-                                            <div className="carousel-item">
-                                                <img src="./images/p2.jpg" className="d-block w-100" alt="..." />
-                                            </div>
-                                            <div className="carousel-item">
-                                                <img src="./images/p3.jpg" className="d-block w-100" alt="..." />
-                                            </div>
+
+                                            {product.images.map((image, index) => (
+                                                <div key={index} className="carousel-item">
+                                                    <Image src={image.image} className="d-block w-100" width={464} height={309} layout="responsive" alt="image" />
+                                                </div>
+                                            ))}
                                         </div>
                                         <button className="carousel-control-prev" type="button"
                                             data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -79,7 +89,7 @@ const ProductPage = ({ product, error }) => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section>}
 
             <hr />
 
@@ -129,7 +139,7 @@ export async function getServerSideProps({ query }) {
     try {
         const res = await axios.get(`/products/${encodeURI(query.slug)}`)
         console.log(res.data.data);
-        
+
         return {
             props: {
                 product: res.data.data
