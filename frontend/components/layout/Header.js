@@ -3,9 +3,12 @@ import logo from "public/images/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import AuthContext from "@/context/AuthContext";
+import { useContext } from "react";
 
 const Header = () => {
   const router = useRouter();
+  const { user } = useContext(AuthContext);
 
   return (
     <div className={router.pathname === "/" ? "" : "sub_page"}>
@@ -101,9 +104,15 @@ const Header = () => {
                       </span>
                     </a>
                   </Link>
-                  <Link href="/auth/login">
-                    <a className="btn-auth">ورود به حساب کاربری</a>
-                  </Link>
+                  {!user ? (
+                    <Link href="/auth/login">
+                      <a className="btn-auth">ورود به حساب کاربری</a>
+                    </Link>
+                  ) : (
+                    <Link href="/profile">
+                      <a className="btn-auth">پروفایل کاربری</a>
+                    </Link>
+                  )}
                 </div>
               </div>
             </nav>
