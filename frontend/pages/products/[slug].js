@@ -3,8 +3,9 @@ import { useEffect, useState } from "react"
 import { toast } from "react-toastify";
 import axios from "axios";
 import Image from "next/image";
+import Product from "@/components/product/Product";
 
-const ProductPage = ({ product, error }) => {
+const ProductPage = ({ product, randomProduct, error }) => {
     const [quantity, setQuantity] = useState(1);
 
     useEffect(() => {
@@ -93,42 +94,17 @@ const ProductPage = ({ product, error }) => {
 
             <hr />
 
-            <section className="food_section my-5">
+            {randomProduct && <section className="food_section my-5">
                 <div className="container">
                     <div className="row gx-3">
-                        <div className="col-sm-6 col-lg-3">
-                            <div className="box">
-                                <div>
-                                    <div className="img-box">
-                                        <img className="img-fluid" src="./images/b1.jpg" alt="" />
-                                    </div>
-                                    <div className="detail-box">
-                                        <h5>
-                                            لورم ایپسوم متن
-                                        </h5>
-                                        <p>
-                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                            از
-                                            طراحان
-                                            گرافیک است.
-                                        </p>
-                                        <div className="options">
-                                            <h6>
-                                                <del>45,000</del>
-                                                34,000
-                                                <span>تومان</span>
-                                            </h6>
-                                            <a href="">
-                                                <i className="bi bi-cart-fill text-white fs-5"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                        {randomProduct.map((product, index) => (
+                            <div key={index} className="col-sm-6 col-lg-3">
+                                <Product product={product} />
                             </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
-            </section>
+            </section>}
         </>
     )
 }
@@ -138,11 +114,12 @@ export default ProductPage
 export async function getServerSideProps({ query }) {
     try {
         const res = await axios.get(`/products/${encodeURI(query.slug)}`)
-        console.log(res.data.data);
+        const resRand = await axios.get("/random-products?count=4")
 
         return {
             props: {
-                product: res.data.data
+                product: res.data.data,
+                randomProduct: resRand.data.data
             }
         }
     } catch (err) {
