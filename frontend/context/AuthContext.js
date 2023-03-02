@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import { handleError } from "lib/helper";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 
@@ -11,6 +11,10 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     const router = useRouter();
+
+    useEffect(() => {
+        checkUserLoggedIn()
+    }, [])
 
     const login = async (cellphone) => {
         try {
@@ -43,6 +47,17 @@ export const AuthProvider = ({ children }) => {
             toast.error(handleError(err))
         } finally {
             setLoading(false)
+        }
+    }
+
+    const checkUserLoggedIn = async () => {
+        try {
+            const res = await axios.post(`${process.env.NEXT_PUBLIC_APP_API_URL}/auth/me`)
+
+            setUser(res.data.user);
+
+        } catch (err) {
+            setUser(null)
         }
     }
 
