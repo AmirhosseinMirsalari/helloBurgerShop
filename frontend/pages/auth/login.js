@@ -3,7 +3,7 @@ import Login from "@/components/auth/Login";
 import { useState } from "react";
 
 const LoginPage = () => {
-    const [setp, setStep] = useState(2);
+    const [setp, setStep] = useState(1);
 
     return (
         <section className="auth_section book_section">
