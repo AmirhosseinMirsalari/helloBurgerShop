@@ -4,13 +4,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import '@/styles/globals.css'
 import { useEffect } from 'react';
 import Header from '@/components/layout/Header';
-import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
+import axios from 'axios';
 import Footer from '@/components/layout/Footer';
-import NProgress from 'nprogress'
 import Router, { useRouter } from 'next/router';
-import { AuthProvider } from 'context/AuthContext';
-
+import NProgress from 'nprogress'
+import { AuthProvider } from '@/context/AuthContext';
+import { SWRConfig } from 'swr'
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_BACKEND_API_URL;
 
@@ -19,12 +19,13 @@ Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
 
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
+
+  const router = useRouter()
 
   useEffect(() => {
     import('bootstrap/dist/js/bootstrap.bundle.js')
   }, []);
-  
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -34,10 +35,12 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <AuthProvider>
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
-      <ToastContainer />
+      <SWRConfig value={{ fetcher: (url) => axios.get(url).then(res => res.data) }}>
+        <Header />
+        <Component {...pageProps} />
+        <Footer />
+        <ToastContainer />
+      </SWRConfig>
     </AuthProvider>
   )
 }
