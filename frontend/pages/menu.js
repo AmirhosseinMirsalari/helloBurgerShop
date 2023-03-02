@@ -17,19 +17,23 @@ const MenuPage = ({ products, categories, error }) => {
   }, [error]);
 
   useEffect(() => {
+    if (router.asPath === "/menu") {
+      setProductList(products);
+    }
+
     router.beforePopState(({ as }) => {
-        if (as !== router.asPath) {
-            // Will run when leaving the current page; on back/forward actions
-            // Add your logic here, like toggling the modal state
-            router.reload()
-        }
-        return true;
+      if (as !== router.asPath) {
+        // Will run when leaving the current page; on back/forward actions
+        // Add your logic here, like toggling the modal state
+        router.reload();
+      }
+      return true;
     });
 
     return () => {
-        router.beforePopState(() => true);
+      router.beforePopState(() => true);
     };
-}, [router]);
+  }, [router]);
 
   const handleFilter = async (value) => {
     let query = { ...router.query, ...value };
