@@ -61,8 +61,19 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    const resendOtp = async () => {
+        try {
+            const res = await axios.post(`${process.env.NEXT_PUBLIC_APP_API_URL}/auth/resendOtp`)
+
+            toast.success('کد ورود دوباره برای شما ارسال شد');
+            
+        } catch (err) {
+            toast.error(handleError(err))
+        }
+    }
+
     return (
-        <AuthContext.Provider value={{ user, login, checkOtp, loading }}>
+        <AuthContext.Provider value={{ user, login, checkOtp, loading, resendOtp }}>
             {children}
         </AuthContext.Provider>
     )
