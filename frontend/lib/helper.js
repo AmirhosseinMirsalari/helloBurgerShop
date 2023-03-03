@@ -41,5 +41,8 @@ const saveStorage = (cart) => {
       return [];
     }
   };
+  const salePercent = (price, sale_price) => {
+    return Math.round(((price - sale_price) / price) * 100);
+  };
 
-export { handleError,numberFormat,saveStorage,getStorage }
+export { handleError,numberFormat,saveStorage,getStorage,salePercent }
