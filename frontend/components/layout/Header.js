@@ -4,11 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import AuthContext from "@/context/AuthContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const [cart, setCart] = useState([]);
   const router = useRouter();
   const { user } = useContext(AuthContext);
+  const state = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    setCart(state.cart);
+  }, [state]);
 
   return (
     <div className={router.pathname === "/" ? "" : "sub_page"}>
@@ -96,11 +103,11 @@ const Header = () => {
                   </li>
                 </ul>
                 <div className="user_option">
-                  <Link href="/cart">
+                <Link href="/cart">
                     <a className="cart_link position-relative">
                       <i className="bi bi-cart-fill text-white fs-5"></i>
                       <span className="position-absolute top-0 translate-middle badge rounded-pill">
-                        3
+                        {cart.length}
                       </span>
                     </a>
                   </Link>

@@ -12,6 +12,7 @@ import NProgress from 'nprogress'
 import { AuthProvider } from '@/context/AuthContext';
 import { SWRConfig } from 'swr'
 import { Provider } from "react-redux";
+import { store } from 'redux/store';
 
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_BACKEND_API_URL;
@@ -37,7 +38,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <AuthProvider>
-      <CommentContextPro>
         <SWRConfig
           value={{ fetcher: (url) => axios.get(url).then((res) => res.data) }}
         >
@@ -49,7 +49,6 @@ function MyApp({ Component, pageProps }) {
             <ToastContainer />
           </Provider>
         </SWRConfig>
-      </CommentContextPro>
     </AuthProvider>
   )
 }
