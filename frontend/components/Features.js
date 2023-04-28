@@ -1,47 +1,45 @@
 const Features = () => {
-    return (
-        <section className="card-area layout_padding">
-            <div className="container">
-                <div className="row gy-5">
-                    <div className="col-md-4 col-sm-6 col-xs-6">
-                        <div className="card text-center">
-                            <div className="card-body">
-                                <div className="card-icon-wrapper">
-                                    <i className="bi bi-telephone-fill fs-2 text-white card-icon"></i>
-                                </div>
-                                <p className="card-text fw-bold mt-2">آماده پاسخ گویی هستیم</p>
-                                <p className="card-text">پشتیبانی آنلاین و تلفنی برای دلگرمی شما</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4 col-sm-6 col-xs-6">
-                        <div className="card text-center">
-                            <div className="card-body">
-                                <div className="card-icon-wrapper">
-                                    <i className="bi bi-clock-fill fs-2 text-white card-icon"></i>
-                                </div>
-                                <p className="card-text fw-bold mt-2">همیشه در کنارتون هستیم</p>
-                                <p className="card-text">هر روز هفته، از ۱۲ ظهر تا ۱۲ شب</p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4 col-sm-6 col-xs-6">
-                        <div className="card text-center">
-                            <div className="card-body">
-                                <div className="card-icon-wrapper">
-                                    <i className="bi bi-geo-alt-fill fs-2 text-white card-icon"></i>
-                                </div>
-                                <p className="card-text fw-bold mt-2">نگران سرد شدن غذا نباش!</p>
-                                <p className="card-text">تا سفره رو پهن کنی، ما رسیدیم</p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <section className="card-area layout_padding">
+      <div className="container">
+        <div className="row gy-5">
+          <div class="col-md-4 col-sm-6 col-xs-6">
+            <div class="card bg-light border-0 shadow rounded shadow-hover">
+              <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                <i class="bi bi-clock-fill fs-2 mb-3 text-primary"></i>
+                <h5 class="card-title mb-3 fw-bold">همیشه در کنارتون هستیم</h5>
+                <p class="card-text text-center">
+                  هر روز هفته، از ۱۲ ظهر تا ۱۲ شب
+                </p>
+              </div>
             </div>
-        </section>
-    )
-}
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-6">
+            <div class="card bg-light border-0 shadow rounded shadow-hover">
+              <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                <i class="bi bi-telephone-fill fs-2 mb-3 text-primary"></i>
+                <h5 class="card-title mb-3 fw-bold">آماده پاسخ گویی هستیم</h5>
+                <p class="card-text text-center">
+                پشتیبانی آنلاین و تلفنی برای دلگرمی شما
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-6">
+            <div class="card bg-light border-0 shadow rounded shadow-hover">
+              <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                <i class="bi bi-geo-alt-fill fs-2 mb-3 text-primary"></i>
+                <h5 class="card-title mb-3 fw-bold">نگران سرد شدن غذا نباش!</h5>
+                <p class="card-text text-center">
+                تا سفره رو پهن کنی، ما رسیدیم
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default Features;
