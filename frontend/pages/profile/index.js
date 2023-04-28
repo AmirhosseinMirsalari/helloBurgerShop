@@ -6,6 +6,7 @@ import Loading from "@/components/profile/Loading";
 import { useForm } from "react-hook-form";
 import axios from "axios"
 import { useState } from "react";
+import Head from "next/head";
 
 const ProfilePage = () => {
     const [loading, setLoading] = useState(false);
@@ -41,6 +42,9 @@ const ProfilePage = () => {
 
     return (
         <Layout>
+            <Head>
+        <title>پروفایل کاربری</title>
+      </Head>
             <form onSubmit={handleSubmit(onSubmit)} className="vh-70">
                 <div className="row g-4">
                     <div className="col col-md-6">

@@ -5,6 +5,7 @@ import { handleError } from "lib/helper";
 import Loading from "@/components/profile/Loading";
 import Create from "@/components/profile/address/Create";
 import Edit from "@/components/profile/address/Edit";
+import Head from "next/head";
 
 const ProfileAddressPage = () => {
     const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_APP_API_URL}/profile/addresses`)
@@ -17,6 +18,9 @@ const ProfileAddressPage = () => {
 
     return (
         <Layout>
+            <Head>
+        <title>آدرس ها</title>
+      </Head>
             <Create provinces={data.provinces} cities={data.cities} />
             <hr />
             {data.addresses.map((address, index) => (

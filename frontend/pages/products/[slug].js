@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import Image from "next/image";
 import Product from "@/components/product/Product";
+import Head from "next/head";
 
 const ProductPage = ({ product, randomProduct, error }) => {
     const [quantity, setQuantity] = useState(1);
@@ -14,6 +15,9 @@ const ProductPage = ({ product, randomProduct, error }) => {
 
     return (
         <>
+        <Head>
+        <title>{product.name}</title>
+      </Head>
             {product && <section className="single_page_section layout_padding">
                 <div className="container">
                     <div className="row">

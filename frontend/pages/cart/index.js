@@ -12,6 +12,7 @@ import {
 import Coupon from "@/components/cart/Coupon";
 import Address from "@/components/cart/Address";
 import Payment from "@/components/cart/Payment";
+import Head from "next/head";
 
 const CartPage = () => {
   const [cart, setCart] = useState(null);
@@ -27,6 +28,9 @@ const CartPage = () => {
   if (cart == null) {
     return (
       <div className="cart-loadnig">
+        <Head>
+          <title>سبد خرید</title>
+        </Head>
         <div className="spinner-border spinner-border-sm ms-2 cart-spiner"></div>
       </div>
     );
@@ -35,6 +39,9 @@ const CartPage = () => {
     <>
       {cart.length != 0 ? (
         <section className="single_page_section layout_padding">
+          <Head>
+            <title>سبد خرید</title>
+          </Head>
           <div className="container">
             <div className="row">
               <div className="col-md-10 offset-md-1">

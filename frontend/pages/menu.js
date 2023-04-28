@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import Product from "@/components/product/Product";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const MenuPage = ({ products, categories, error }) => {
   const [search, setSearch] = useState("");
@@ -61,6 +62,9 @@ const MenuPage = ({ products, categories, error }) => {
 
   return (
     <section className="food_section layout_padding">
+      <Head>
+        <title>منوی غذا</title>
+      </Head>
       <div className="container">
         <div className="row">
           <div className="col-sm-12 col-lg-3">
