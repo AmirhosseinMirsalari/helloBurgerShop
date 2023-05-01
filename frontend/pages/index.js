@@ -4,13 +4,14 @@ import Features from "@/components/Features";
 import ProductsTab from "@/components/product/ProductsTab";
 import axios from "axios";
 import { handleError } from "lib/helper";
-import dynamic from "next/dynamic";
+import Map from "../components/Map";
 import Head from "next/head";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-const Map = dynamic(() => import("@/components/contact/Map"), { ssr: false });
 
 const Home = ({ productsTab, error }) => {
+  const DEFAULT_CENTER = [35.700105, 51.400394];
+
   useEffect(() => {
     error && toast.error(error);
   }, [error]);
@@ -36,7 +37,20 @@ const Home = ({ productsTab, error }) => {
             </div>
             <div className="col-md-6">
               <div className="map_container ">
-                <Map />
+                <Map width="800" height="400" center={DEFAULT_CENTER} zoom={15}>
+                  {({ TileLayer, Marker, Popup }) => (
+                    <>
+                      <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                      />
+                      <Marker position={DEFAULT_CENTER}>
+                        <Popup>
+                          ما اینجاییم، حضورا هم درخدمت شما هستیم
+                        </Popup>
+                      </Marker>
+                    </>
+                  )}
+                </Map>
               </div>
             </div>
           </div>

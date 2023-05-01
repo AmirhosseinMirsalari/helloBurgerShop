@@ -1,10 +1,11 @@
+import Map from "@/components/Map";
 import ContactForm from "@/components/contact/ContactForm";
-import dynamic from "next/dynamic";
 import Head from "next/head";
 
-const Map = dynamic(() => import("@/components/contact/Map"), { ssr: false });
 
 const ContactPage = () => {
+  const DEFAULT_CENTER = [35.700105, 51.400394];
+
   return (
     <section className="book_section layout_padding">
       <Head>
@@ -22,7 +23,20 @@ const ContactPage = () => {
           </div>
           <div className="col-md-6">
             <div className="map_container ">
-              <Map />
+            <Map width="800" height="400" center={DEFAULT_CENTER} zoom={15}>
+                  {({ TileLayer, Marker, Popup }) => (
+                    <>
+                      <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                      />
+                      <Marker position={DEFAULT_CENTER}>
+                        <Popup>
+                          ما اینجاییم، حضورا هم درخدمت شما هستیم
+                        </Popup>
+                      </Marker>
+                    </>
+                  )}
+                </Map>
             </div>
           </div>
         </div>
