@@ -138,7 +138,7 @@ const Header = () => {
                       </ul>
                       <div className="user_option">
                         <div data-bs-dismiss="offcanvas" aria-label="Close">
-                          <Link href="/menu">
+                          <Link href="/cart">
                             <a className="cart_link position-relative">
                               <i className="bi bi-cart-fill text-white fs-5"></i>
                               <span className="position-absolute top-0 translate-middle badge rounded-pill">
@@ -216,7 +216,7 @@ const Header = () => {
                   </li>
                 </ul>
                 <div className="user_option">
-                  <Link href="/menu">
+                  <Link href="/cart">
                     <a className="cart_link position-relative">
                       <i className="bi bi-cart-fill text-white fs-5"></i>
                       <span className="position-absolute top-0 translate-middle badge rounded-pill">
