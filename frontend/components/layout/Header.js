@@ -106,20 +106,7 @@ const Header = () => {
                           }
                         >
                           <Link href="/menu">
-                            <a className="nav-link">منو</a>
-                          </Link>
-                        </li>
-                        <li
-                          data-bs-dismiss="offcanvas"
-                          aria-label="Close"
-                          className={
-                            router.pathname === "/about"
-                              ? "nav-item active"
-                              : "nav-item"
-                          }
-                        >
-                          <Link href="/about">
-                            <a className="nav-link">درباره ما</a>
+                            <a className="nav-link">منو غذا</a>
                           </Link>
                         </li>
                         <li
@@ -189,20 +176,10 @@ const Header = () => {
                     }
                   >
                     <Link href="/menu">
-                      <a className="nav-link">منو</a>
+                      <a className="nav-link">منو غذا</a>
                     </Link>
                   </li>
-                  <li
-                    className={
-                      router.pathname === "/about"
-                        ? "nav-item active"
-                        : "nav-item"
-                    }
-                  >
-                    <Link href="/about">
-                      <a className="nav-link">درباره ما</a>
-                    </Link>
-                  </li>
+                 
                   <li
                     className={
                       router.pathname === "/contact"
