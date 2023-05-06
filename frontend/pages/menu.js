@@ -70,6 +70,7 @@ const MenuPage = ({ products, categories, error }) => {
           <div className="col-sm-12 col-lg-3">
             <div>
               <label className="form-label">جستجو</label>
+
               <div className="input-group mb-3">
                 <input
                   onChange={(e) => setSearch(e.target.value)}
@@ -81,10 +82,11 @@ const MenuPage = ({ products, categories, error }) => {
                 />
                 <button
                   onClick={() => search !== "" && handleFilter({ search })}
-                  className="input-group-text"
+                  className="btn btn-outline-secondary"
+                  type="button"
                   id="basic-addon2"
                 >
-                  <i className="bi bi-search"></i>
+                  <i className="bi bi-search"></i> جستجو
                 </button>
               </div>
             </div>

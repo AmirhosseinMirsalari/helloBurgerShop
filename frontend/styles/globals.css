@@ -1074,9 +1074,23 @@ a:focus {
 }
 
 .form-control:focus {
-  border-color: #222831;
-  box-shadow: 0 0 0 0.25rem rgb(51 52 54 / 25%);
+  border-color: #ffbe33;
+  box-shadow: none;
+  animation: input-focus 0.5s ease-in-out;
 }
+
+@keyframes input-focus {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 
 .carousel-inner {
   border-radius: 20px;
@@ -1492,3 +1506,4 @@ a:focus {
             font-size: 50px;
         }
     }
+    
