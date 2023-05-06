@@ -22,7 +22,7 @@ body {
   vertical-align: -0.3em !important;
 }
 .layout_padding {
-  padding: 90px 0;
+  padding: 50px 0 90px 0;
 }
 
 .layout_padding2 {
@@ -64,7 +64,7 @@ p {
   flex-direction: column;
   -webkit-box-align: start;
   -ms-flex-align: start;
-  align-items: flex-start;
+  align-items:center
 }
 
 .heading_container h2 {
@@ -456,19 +456,25 @@ a:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+  /* -ms-flex-wrap: wrap;
+  flex-wrap: wrap; */
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  align-items: center;
   list-style-type: none;
   margin: 45px 0 20px 0;
+  align-items: center;
 }
 
 .food_section .filters_menu li {
   padding: 7px 25px;
   cursor: pointer;
   border-radius: 25px;
+  flex: 0 0 auto;
+}
+.filters-content{
+  margin-right: 15px;
 }
 
 .food_section .filters_menu li.active {
@@ -1399,3 +1405,90 @@ a:focus {
   transition: all 0.3s ease;
 
 }
+.testimonial-area {
+  padding: 80px 0;
+}
+.section-header h4 {
+  color: #f75023;
+  font-weight: 600;
+}
+.section-header {
+	padding-bottom: 15px;
+}
+.section-header h2 {
+	font-weight: 700;
+}
+.section-header p {
+  color: #6f6b80;
+  width: 40%;
+  margin: auto;
+}
+
+.icon-area {
+  text-align: center;
+}
+.icon-area i {
+  color: #f75023;
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+.content p {
+  color: #6f6b80;
+  width: 60%;
+  margin: auto;
+}
+.person {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid #f75023;
+  margin-top: 50px;
+}
+.person img {
+  width: 100%;
+}
+.content h5 {
+  font-weight: 900;
+  margin-top: 15px;
+}
+.testimonial-area {
+  /* background: url(1.jpg); */
+  background-size: cover;
+  background-position: center;
+}
+    .carousel-indicators {
+	bottom: -80px;
+}
+    .carousel-indicators [data-bs-target] {
+	width: 60px;
+	height: 10px;
+	background-color: #f75023;
+}
+    
+    
+    @media (min-width: 768px) and (max-width: 991px){
+        .section-header p {
+            width: 85%;
+        }
+        .content p {
+            width: 95%;
+        }
+    }
+    
+    @media (max-width: 767px){
+        .testimonial-area {
+            padding: 30px 0;
+        }
+        .section-header p {
+            width: 95%;
+        }
+        .content p {
+            width: 100%;
+        }
+        .icon-area i {
+            font-size: 50px;
+        }
+    }
