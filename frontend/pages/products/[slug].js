@@ -5,9 +5,17 @@ import axios from "axios";
 import Image from "next/image";
 import Product from "@/components/product/Product";
 import Head from "next/head";
+import { useDispatch } from "react-redux";
+import { addToCart, removeFromCart } from "redux/shoppingCart/cartSlice";
 
 const ProductPage = ({ product, randomProduct, error }) => {
     const [quantity, setQuantity] = useState(1);
+    const dispatch = useDispatch();
+    const handleAddToCart = () => {
+      dispatch(removeFromCart({ id: product.id }));
+  
+      dispatch(addToCart({ product, qty: quantity }));
+    };
 
     useEffect(() => {
         error && toast.error(error)
@@ -25,14 +33,18 @@ const ProductPage = ({ product, randomProduct, error }) => {
                             <div className="row gy-5">
                                 <div className="col-sm-12 col-lg-6">
                                     <h3 className="fw-bold mb-4">{product.name}</h3>
-                                    <h5 className="mb-3">
+                                   
+                                    <p className="mb-5">{product.description}</p>
+                                    <div className="py-3 px-5 bg-light border-0 rounded shadow-hover d-flex justify-content-around align-items-center">
+                                    <span>هزینه محصول :</span>
+                                    <h5 style={{marginBottom:"-4px"}} className="d-inline-block">
                                         {product.is_sale ? (
                                             <>
-                                                <span>{numberFormat(product.sale_price)}</span>
+                                                <span className="mx-1">{numberFormat(product.sale_price)}</span>
                                                 <del className="me-1">{numberFormat(product.price)}</del>
                                             </>
                                         ) : (
-                                            <span>{numberFormat(product.price)}</span>
+                                            <span className="mx-1">{numberFormat(product.price)}</span>
                                         )}
                                         <span>تومان</span>
 
@@ -40,10 +52,10 @@ const ProductPage = ({ product, randomProduct, error }) => {
                                             {salePercent(product.price, product.sale_price)}% تخفیف
                                         </div>}
                                     </h5>
-                                    <p>{product.description}</p>
-
-                                    <div className="mt-5 d-flex">
-                                        <button className="btn-add">افزودن به سبد خرید</button>
+                                    </div>
+                              
+                                    <div className="mt-5 d-flex justify-content-around">
+                                        <button onClick={handleAddToCart} className="btn-add">افزودن به سبد خرید</button>
                                         <div className="input-counter ms-4">
                                             <span className="plus-btn" onClick={() => quantity < product.quantity && setQuantity(prevQty => prevQty + 1)}>
                                                 +
@@ -53,6 +65,7 @@ const ProductPage = ({ product, randomProduct, error }) => {
                                                 -
                                             </span>
                                         </div>
+                                  
                                     </div>
                                 </div>
                                 <div className="col-sm-12 col-lg-6">
@@ -97,8 +110,10 @@ const ProductPage = ({ product, randomProduct, error }) => {
             </section>}
 
             <hr />
-
-            {randomProduct && <section className="food_section my-5">
+            <div className="heading_container">
+            <h3 className=" fw-bold mt-5 ">محصولات پیشنهادی</h3>
+          </div>
+            {randomProduct && <section className="food_section mb-5">
                 <div className="container">
                     <div className="row gx-3">
                         {randomProduct.map((product, index) => (
