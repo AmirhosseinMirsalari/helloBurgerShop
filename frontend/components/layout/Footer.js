@@ -1,6 +1,9 @@
+import { useRouter } from "next/router";
+
 const Footer = () => {
+  const router = useRouter()
   return (
-    <footer className="footer_section">
+    <footer className={router.pathname !== "/auth/login" ? "footer_section" : "d-none"}>
       <div className="container">
         <div className="row">
           <div className="col-md-4 footer-col">
