@@ -19,7 +19,7 @@ const Login = ({ setStep }) => {
         }
 
         await login(cellphone)
-
+        
         setStep(2)
     }
 
@@ -27,10 +27,10 @@ const Login = ({ setStep }) => {
         <div className="form_container">
             <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">شماره موبایل</label>
-                <input onChange={(e) => setCellphone(e.target.value)} type="email" className="form-control" id="exampleInputEmail1"
-                    aria-describedby="emailHelp" />
+                <input onChange={(e) => setCellphone(e.target.value)} className="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="شماره موبایل خود را وارد کنید" />
             </div>
-            <button onClick={handleLogin} disabled={loading} className="btn btn-primary btn-auth">
+            <button onClick={handleLogin} disabled={loading} className="btn btn-primary btn-auth w-100">
                 ورود
                 {loading && <div className="spinner-border spinner-border-sm ms-2"></div>}
             </button>
