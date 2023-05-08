@@ -16,8 +16,9 @@ const Product = ({ product }) => {
     <div className="box">
       <div>
         <div className="img-box">
+          <Link href={`/products/${product.slug}`}>
           <Image
-            className="img-fluid"
+            className="img-fluid cursor-pointer"
             src={product.primary_image}
             layout="responsive"
             width={366}
@@ -25,22 +26,27 @@ const Product = ({ product }) => {
             placeholder="blur"
             blurDataURL={product.primary_image_blurDataURL}
           />
+          </Link>
+         
         </div>
         <div className="detail-box">
           <h5>
             <Link href={`/products/${product.slug}`}>{product.name}</Link>
           </h5>
+
           <p>{product.description}</p>
 
           <div className="options">
             <h6>
               {product.is_sale ? (
                 <>
-                  <span>{numberFormat(product.sale_price)}</span>
+                  <span className="mx-1">
+                    {numberFormat(product.sale_price)}
+                  </span>
                   <del className="me-1">{numberFormat(product.price)}</del>
                 </>
               ) : (
-                <span>{numberFormat(product.price)}</span>
+                <span className="mx-1">{numberFormat(product.price)}</span>
               )}
               <span>تومان</span>
             </h6>
