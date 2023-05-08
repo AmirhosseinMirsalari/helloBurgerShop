@@ -59,7 +59,7 @@ const CheckOtp = () => {
     return (
         <div className="form_container">
             <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">کد ورود</label>
+                <label htmlFor="exampleInputEmail1" className="form-label">کد ورود پیامک شده را وارد کنید</label>
                 <input onChange={(e) => setOtp(e.target.value)} type="text" className="form-control" id="exampleInputEmail1"
                     aria-describedby="emailHelp" />
             </div>
