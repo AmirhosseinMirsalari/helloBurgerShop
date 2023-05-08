@@ -11,6 +11,7 @@ const MenuPage = ({ products, categories, error }) => {
   const [search, setSearch] = useState("");
   const [productList, setProductList] = useState(products);
   const [loading, setLoading] = useState(false);
+  console.log(search);
 
   const router = useRouter();
   const isMobile = useIsMobile();
@@ -88,7 +89,7 @@ const MenuPage = ({ products, categories, error }) => {
                       <span className="mx-2 cursor-pointer">فیلتر محصولات</span>
                     </div>
                     <div onClick={() => router.push("/menu")}>
-                    <i style={{color:"red"}} className="bi bi-x-lg"></i>
+                      <i style={{ color: "red" }} className="bi bi-x-lg"></i>
                       <span className="mx-1 cursor-pointer">حذف فیلتر ها</span>
                     </div>
                   </div>
@@ -244,7 +245,13 @@ const MenuPage = ({ products, categories, error }) => {
                   aria-describedby="basic-addon2"
                 />
                 <button
-                  onClick={() => search !== "" && handleFilter({ search })}
+                  onClick={() => {
+                    if (!search) {
+                      router.push("/menu");
+                    } else {
+                      handleFilter({ search });
+                    }
+                  }}
                   className="btn btn-outline-secondary"
                   type="button"
                   id="basic-addon2"
