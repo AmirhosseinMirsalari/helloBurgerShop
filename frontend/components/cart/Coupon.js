@@ -24,25 +24,29 @@ const Coupon = ({ coupon, setCoupon }) => {
   };
 
   return (
-    <div className="input-group mb-3">
-      <input
-        type="text"
-        className="form-control"
-        placeholder="کد تخفیف"
-        onChange={(e) => setCoupon({ ...coupon, code: e.target.value })}
-      />
-      <button
-        onClick={handleSubmit}
-        disabled={coupon == ""}
-        className="input-group-text"
-        id="basic-addon2"
-      >
-        اعمال کد تخفیف
-        {loading && (
-          <div className="spinner-border spinner-border-sm ms-2"></div>
-        )}
-      </button>
-    </div>
+    <>
+
+      <div className="input-group mb-3">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="کد تخفیف"
+          onChange={(e) => setCoupon({ ...coupon, code: e.target.value })}
+        />
+        <button
+          onClick={handleSubmit}
+          disabled={coupon == ""}
+          className="input-group-text"
+          id="basic-addon2"
+        >
+          اعمال کد تخفیف
+          {loading && (
+            <div className="spinner-border spinner-border-sm ms-2"></div>
+          )}
+        </button>
+      </div>
+      
+    </>
   );
 };
 

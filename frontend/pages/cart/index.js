@@ -143,20 +143,26 @@ const CartPage = () => {
                         </tbody>
                       </table>
                     </div>
+                  </div>
+                </div>
+                <div className="row mt-4 d-flex">
+                  <div className="mb-3">
+                    <i className="bi bi-lightbulb-fill text-primary"></i>
+                    <span style={{ fontSize: "12px" }}>
+                      برای اعمال تخفیف در حالت تست، از کد 5percent استفاده کنید
+                    </span>
+                  </div>
+                  <div className="col-12 col-md-6">
+                    <Coupon coupon={coupon} setCoupon={setCoupon} />
+                  </div>
+
+                  <div className="col-12 col-md-6 d-flex justify-content-end align-items-baseline">
                     <button
                       onClick={() => dispatch(clearCart())}
                       className="btn btn-primary mb-4"
                     >
                       پاک کردن سبد خرید
                     </button>
-                  </div>
-                </div>
-                <div className="row mt-4">
-                  <div className="col-12 col-md-6">
-                    <Coupon coupon={coupon} setCoupon={setCoupon} />
-                  </div>
-                  <div className="col-12 col-md-6 d-flex justify-content-end align-items-baseline">
-                    <Address setAddressId={setAddressId} />
                   </div>
                 </div>
                 <div className="row justify-content-center mt-5">
