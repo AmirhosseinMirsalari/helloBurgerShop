@@ -11,7 +11,6 @@ const MenuPage = ({ products, categories, error }) => {
   const [search, setSearch] = useState("");
   const [productList, setProductList] = useState(products);
   const [loading, setLoading] = useState(false);
-  console.log(search);
 
   const router = useRouter();
   const isMobile = useIsMobile();
