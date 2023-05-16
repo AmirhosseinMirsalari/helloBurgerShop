@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { numberFormat, salePercent } from "lib/helper";
 import Link from "next/link";
@@ -13,6 +13,8 @@ import Coupon from "@/components/cart/Coupon";
 import Address from "@/components/cart/Address";
 import Payment from "@/components/cart/Payment";
 import Head from "next/head";
+import AuthContext from "@/context/AuthContext";
+import { useRouter } from "next/router";
 
 const CartPage = () => {
   const [cart, setCart] = useState(null);
@@ -20,6 +22,8 @@ const CartPage = () => {
   const dispatch = useDispatch();
   const [coupon, setCoupon] = useState({ code: "", percentage: 0 });
   const [addressId, setAddressId] = useState(null);
+  const { user } = useContext(AuthContext);
+  const router = useRouter();
 
   useEffect(() => {
     setCart(state.cart);
@@ -160,9 +164,27 @@ const CartPage = () => {
                     <button
                       onClick={() => dispatch(clearCart())}
                       className="btn btn-primary mb-4"
+                      style={{ padding: "10px 15px" }}
                     >
-                      پاک کردن سبد خرید
+                      حذف سبد خرید
                     </button>
+                  </div>
+                  <div className="col-12 col-md-6 d-flex justify-content-start align-items-baseline">
+                    {user ? (
+                      <Address setAddressId={setAddressId} />
+                    ) : (
+                      <span
+                        onClick={() => router.push("/auth/login")}
+                        style={{
+                          fontSize: "15px",
+                          cursor: "pointer",
+                          color: "blue",
+                        }}
+                      >
+                        برای تکمیل خرید و آدرس انتخابی، وارد حساب کاربری خود
+                        شوید
+                      </span>
+                    )}
                   </div>
                 </div>
                 <div className="row justify-content-center mt-5">
