@@ -32,13 +32,13 @@ const ProfileOrderPage = () => {
       </Head>
       <div className="table-responsive">
         <table className="table align-middle">
-          <thead>
+        <thead style={{ whiteSpace: 'nowrap', overflowX: 'scroll' }}>
             <tr>
-              <th>شماره سفارش</th>
-              <th>مبلغ</th>
-              <th>وضعیت</th>
-              <th>شماره پیگیری</th>
-              <th>تاریخ</th>
+              <th >شماره سفارش</th>
+              <th className="px-3">مبلغ</th>
+              <th className="px-3">وضعیت</th>
+              <th className="px-3">شماره پیگیری</th>
+              <th className="px-3">تاریخ</th>
             </tr>
           </thead>
           <tbody>
@@ -62,23 +62,25 @@ const ProfileOrderPage = () => {
           </tbody>
         </table>
       </div>
-      <nav className="d-flex justify-content-center mt-5">
-        <ul className="pagination">
-          {data.meta.links.slice(1, -1).map((link, index) => (
-            <li
-              key={index}
-              className={link.active ? "page-item active" : "page-item"}
-            >
-              <button
-                onClick={() => setPageIndex(link.label)}
-                className="page-link"
-              >
-                {link.label}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      {!data.transactions.length ?         <p className="text-center">شما تا کنون سفارشی ثبت نکرده اید!</p>
+: <nav className="d-flex justify-content-center mt-5">
+<ul className="pagination">
+  {data.meta.links.slice(1, -1).map((link, index) => (
+    <li
+      key={index}
+      className={link.active ? "page-item active" : "page-item"}
+    >
+      <button
+        onClick={() => setPageIndex(link.label)}
+        className="page-link"
+      >
+        {link.label}
+      </button>
+    </li>
+  ))}
+</ul>
+</nav> }
+      
     </Layout>
   );
 };

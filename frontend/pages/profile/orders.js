@@ -13,6 +13,7 @@ const ProfileOrderPage = () => {
   const { data, error } = useSWR(
     `${process.env.NEXT_PUBLIC_APP_API_URL}/profile/orders?page=${pageIndex}`
   );
+  console.log(data);
 
   if (error) {
     toast.error(handleError(error));
@@ -32,14 +33,14 @@ const ProfileOrderPage = () => {
       </Head>
       <div className="table-responsive">
         <table className="table align-middle">
-          <thead>
+          <thead style={{ whiteSpace: 'nowrap', overflowX: 'scroll' }}>
             <tr>
               <th>شماره سفارش</th>
-              <th>آدرس</th>
-              <th>وضعیت</th>
-              <th>وضعیت پرداخت</th>
-              <th>قیمت کل</th>
-              <th>تاریخ</th>
+              <th className="px-3">آدرس</th>
+              <th className="px-3">وضعیت</th>
+              <th className="px-3">وضعیت پرداخت</th>
+              <th className="px-3">قیمت کل</th>
+              <th className="px-3">تاریخ</th>
             </tr>
           </thead>
           <tbody>
@@ -127,23 +128,28 @@ const ProfileOrderPage = () => {
           </tbody>
         </table>
       </div>
-      <nav className="d-flex justify-content-center mt-5">
-        <ul className="pagination">
-          {data.meta.links.slice(1, -1).map((link, index) => (
-            <li
-              key={index}
-              className={link.active ? "page-item active" : "page-item"}
-            >
-              <button
-                onClick={() => setPageIndex(link.label)}
-                className="page-link"
+
+      {!data.orders.length ? (
+        <p className="text-center">شما تا کنون محصولی سفارش نداده اید!</p>
+      ) : (
+        <nav className="d-flex justify-content-center mt-5">
+          <ul className="pagination">
+            {data.meta.links.slice(1, -1).map((link, index) => (
+              <li
+                key={index}
+                className={link.active ? "page-item active" : "page-item"}
               >
-                {link.label}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
+                <button
+                  onClick={() => setPageIndex(link.label)}
+                  className="page-link"
+                >
+                  {link.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
     </Layout>
   );
 };
