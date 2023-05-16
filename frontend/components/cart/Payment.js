@@ -25,7 +25,7 @@ const Payment = ({ cart, coupon, addressId }) => {
       );
       router.push(res.data.url);
     } catch (err) {
-      toast.error(handleError(err));
+      toast.error("درگاه پرداخت pay.ir از دسترس عموم خارج شده است")
     } finally {
       setLoading(false);
     }
