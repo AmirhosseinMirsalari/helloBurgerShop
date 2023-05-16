@@ -33,17 +33,10 @@ const LoginPage = () => {
                 </h5>
 
                 {setp === 1 && <Login setStep={setStep} />}
-                {setp === 2 && <CheckOtp />}
+                {setp === 2 && <CheckOtp setStep={setStep} />}
               </div>
             </div>
-         
           </div>
-          {setp === 2 && (
-                <span className="my-5 text-center">
-                  به دلیل عدم اتصال سرور به سرویس پیامکی در حالت دمو، پیامکی
-                  برای شما ارسال نمی شود{" "}
-                </span>
-            )}
         </div>
       </div>
     </section>
