@@ -19,8 +19,8 @@ return [
 
     'allowed_methods' => ['*'],
 
-    // 'allowed_origins' => ['https://webprog-projects-js.ir', 'https://panel.webprog-projects-js.ir'],
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['https://burger-shop.iran.liara.run','http://localhost:3000'],
+    // 'allowed_origins' => ['*'],
 
     'allowed_origins_patterns' => [],
 
