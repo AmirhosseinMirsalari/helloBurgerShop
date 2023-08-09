@@ -38,7 +38,7 @@ const Home = ({ productsTab, error }) => {
               </div>
               <div className="col-md-6 d-flex align-items-center">
                 <div className="map_container ">
-                  <div class="bg-light p-3 border-0 rounded shadow shadow-hover m-auto">
+                  <div className="bg-light p-3 border-0 rounded shadow shadow-hover m-auto">
                     <Map
                       width="800"
                       height="400"

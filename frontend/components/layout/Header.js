@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
-import header from "public/images/header.webp";
 import logo from "public/images/logo.png";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,7 +26,7 @@ const Header = () => {
         <div className="bg-box">
           {router.pathname === "/" && (
             <Image
-              src={header}
+              src="https://uupload.ir/view/header_dlj0.webp"
               placeholder="blur"
               layout="fill"
               alt="hero-image"
