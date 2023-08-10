@@ -1,0 +1,9 @@
+{
+    "app": "burger-api",
+    "disks":[
+        {
+            "name":"disk",
+            "mountTo": "public/storage/images/products/"
+        }
+    ]
+}
