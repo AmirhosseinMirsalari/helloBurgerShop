@@ -108,6 +108,8 @@ const CheckOtp = ({ setStep }) => {
               onChange={(e) => handleChange("otp1", e)}
               tabIndex="1"
               maxLength="1"
+              min={0}
+              max={9}
               onKeyUp={(e) => inputfocus(e)}
             />
             <input
@@ -118,6 +120,8 @@ const CheckOtp = ({ setStep }) => {
               value={otp.otp2}
               onChange={(e) => handleChange("otp2", e)}
               tabIndex="2"
+              min={0}
+              max={9}
               maxLength="1"
               onKeyUp={(e) => inputfocus(e)}
             />
@@ -130,6 +134,8 @@ const CheckOtp = ({ setStep }) => {
               onChange={(e) => handleChange("otp3", e)}
               tabIndex="3"
               maxLength="1"
+              min={0}
+              max={9}
               onKeyUp={(e) => inputfocus(e)}
             />
             <input
@@ -141,6 +147,8 @@ const CheckOtp = ({ setStep }) => {
               onChange={(e) => handleChange("otp4", e)}
               tabIndex="4"
               maxLength="1"
+              min={0}
+              max={9}
               onKeyUp={(e) => inputfocus(e)}
             />
 
@@ -154,6 +162,8 @@ const CheckOtp = ({ setStep }) => {
               tabIndex="5"
               maxLength="1"
               onKeyUp={(e) => inputfocus(e)}
+              min={0}
+              max={9}
             />
             <input
               name="otp6"
@@ -164,6 +174,8 @@ const CheckOtp = ({ setStep }) => {
               onChange={(e) => handleChange("otp6", e)}
               tabIndex="6"
               maxLength="1"
+              min={0}
+              max={9}
               onKeyUp={(e) => inputfocus(e)}
             />
           </div>
