@@ -144,7 +144,7 @@ const Header = () => {
                         ) : (
                           <div data-bs-dismiss="offcanvas" aria-label="Close">
                             <Link href="/profile">
-                              <a className="btn-auth">پروفایل کاربری</a>
+                              <a className="btn-auth bg-danger">پروفایل کاربری</a>
                             </Link>
                           </div>
                         )}
