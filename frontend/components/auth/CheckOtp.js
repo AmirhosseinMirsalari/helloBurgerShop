@@ -100,7 +100,7 @@ const CheckOtp = ({ setStep }) => {
           <div className="d-flex flex-row-reverse">
             <input
               name="otp1"
-              type="text"
+              type="number"
               autoComplete="off"
               id="exampleInputEmail1"
               className="form-control"
@@ -112,7 +112,7 @@ const CheckOtp = ({ setStep }) => {
             />
             <input
               name="otp2"
-              type="text"
+              type="number"
               autoComplete="off"
               className="form-control"
               value={otp.otp2}
@@ -123,7 +123,7 @@ const CheckOtp = ({ setStep }) => {
             />
             <input
               name="otp3"
-              type="text"
+              type="number"
               autoComplete="off"
               className="form-control"
               value={otp.otp3}
@@ -134,7 +134,7 @@ const CheckOtp = ({ setStep }) => {
             />
             <input
               name="otp4"
-              type="text"
+              type="number"
               autoComplete="off"
               className="form-control"
               value={otp.otp4}
@@ -146,7 +146,7 @@ const CheckOtp = ({ setStep }) => {
 
             <input
               name="otp5"
-              type="text"
+              type="number"
               autoComplete="off"
               className="form-control"
               value={otp.otp5}
@@ -157,7 +157,7 @@ const CheckOtp = ({ setStep }) => {
             />
             <input
               name="otp6"
-              type="text"
+              type="number"
               autoComplete="off"
               className="form-control"
               value={otp.otp6}

@@ -3,7 +3,7 @@ const Features = () => {
     <section className="card-area layout_padding">
       <div className="container">
         <div className="row gy-5">
-          <div className="col-md-4 col-sm-6 col-xs-6">
+          <div className="col-md-4 col-sm-6 col-xs-6 card-feat">
             <div className="card bg-light border-0 shadow rounded shadow-hover">
               <div className="card-body d-flex flex-column justify-content-center align-items-center">
                 <i className="bi bi-clock-fill fs-2 mb-3 text-primary"></i>
@@ -14,7 +14,7 @@ const Features = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-4 col-sm-6 col-xs-6">
+          <div className="col-md-4 col-sm-6 col-xs-6 card-feat">
             <div className="card bg-light border-0 shadow rounded shadow-hover">
               <div className="card-body d-flex flex-column justify-content-center align-items-center">
                 <i className="bi bi-telephone-fill fs-2 mb-3 text-primary"></i>
@@ -25,7 +25,7 @@ const Features = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-4 col-sm-6 col-xs-6">
+          <div className="col-md-4 col-sm-6 col-xs-6 card-feat">
             <div className="card bg-light border-0 shadow rounded shadow-hover">
               <div className="card-body d-flex flex-column justify-content-center align-items-center">
                 <i className="bi bi-geo-alt-fill fs-2 mb-3 text-primary"></i>

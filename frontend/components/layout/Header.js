@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
-import logo from "public/images/logo.png";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -7,6 +7,7 @@ import AuthContext from "@/context/AuthContext";
 import { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useIsMobile } from "lib/helper";
+import logo from "public/images/logo.png";
 
 const Header = () => {
   const [cart, setCart] = useState([]);
@@ -25,8 +26,8 @@ const Header = () => {
       <div className="hero_area">
         <div className="bg-box">
           {router.pathname === "/" && (
-            <Image
-              src="https://uupload.ir/view/header_dlj0.webp"
+            <img
+              src="https://s8.uupload.ir/files/header_7ccs.jpg"
               placeholder="blur"
               layout="fill"
               alt="hero-image"
@@ -37,8 +38,8 @@ const Header = () => {
         <header className="header_section">
           <div style={{ marginBottom: "-20px" }} className="container mt-3">
             <nav className="navbar navbar-expand-lg custom_nav-container">
-              <a href="/" style={{ marginBottom: "15px" }}>
-                <Image src={logo} alt="logo" />
+              <a className="logoName" href="/" style={{ marginBottom: "18px" }}>
+                <Image  src={logo} alt="logo" />
               </a>
 
               {isMobile && (
@@ -58,7 +59,7 @@ const Header = () => {
                   <div
                     className="offcanvas offcanvas-end"
                     tabIndex="-1"
-                    style={{ backgroundColor: "#0F0F0F" }}
+                    style={{ backgroundColor: "rgb(245 245 244)" }}
                     id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel"
                   >
@@ -67,7 +68,7 @@ const Header = () => {
                       className="offcanvas-header"
                     >
                       <h5
-                        className="offcanvas-title text-white my-"
+                        className="offcanvas-title"
                         id="offcanvasNavbarLabel"
                       >
                         دسترسی سریع
@@ -79,7 +80,7 @@ const Header = () => {
                         aria-label="Close"
                       ></button>
                     </div>
-                    <hr className="text-white" />
+                    <hr  />
                     <div className="offcanvas-body">
                       <ul className="navbar-nav">
                         <li
@@ -91,8 +92,8 @@ const Header = () => {
                               : "nav-item"
                           }
                         >
-                          <Link href="/">
-                            <a className="nav-link">صفحه اصلی</a>
+                          <Link className="text-dark" href="/">
+                            <a className="nav-link text-dark">صفحه اصلی</a>
                           </Link>
                         </li>
                         <li
@@ -105,7 +106,7 @@ const Header = () => {
                           }
                         >
                           <Link href="/menu">
-                            <a className="nav-link">منو غذا</a>
+                            <a className="nav-link text-dark">منو غذا</a>
                           </Link>
                         </li>
                         <li
@@ -118,7 +119,7 @@ const Header = () => {
                           }
                         >
                           <Link href="/contact">
-                            <a className="nav-link">تماس باما</a>
+                            <a className="nav-link text-dark">تماس باما</a>
                           </Link>
                         </li>
                       </ul>
@@ -126,8 +127,8 @@ const Header = () => {
                         <div data-bs-dismiss="offcanvas" aria-label="Close">
                           <Link href="/cart">
                             <a className="cart_link position-relative">
-                              <i className="bi bi-cart-fill text-white fs-5"></i>
-                              <span className="position-absolute top-0 translate-middle badge rounded-pill">
+                              <i className="bi bi-cart-fill fs-5 text-danger"></i>
+                              <span className="position-absolute top-0 translate-middle badge rounded-pill bg-white text-danger">
                                 {cart.length}
                               </span>
                             </a>
@@ -137,7 +138,7 @@ const Header = () => {
                         {!user ? (
                           <div data-bs-dismiss="offcanvas" aria-label="Close">
                             <Link href="/auth/login">
-                              <a className="btn-auth">ورود به حساب کاربری</a>
+                              <a className="btn-auth bg-danger">ورود به حساب کاربری</a>
                             </Link>
                           </div>
                         ) : (

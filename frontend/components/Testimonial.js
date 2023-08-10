@@ -8,7 +8,7 @@ function Testimonial() {
         <div className="row">
           <div className="col-sm-12">
             <div className="section-header text-center">
-              <h4 className="fw-bold mb-5">مشتریان هلو برگر در مورد ما چه می گویند؟</h4>
+              <h5 className="fw-bold mb-5 text-danger text-nowrap text-center">مشتریان هلو برگر در مورد ما چه می گویند؟</h5>
               <p>
                 سرمایه اصلی هلو برگر، نظرات سازنده شماست! با ما در ارتباط باشید :)
               </p>

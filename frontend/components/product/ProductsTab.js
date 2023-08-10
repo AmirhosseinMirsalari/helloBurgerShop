@@ -23,7 +23,7 @@ const ProductsTab = ({ tabs }) => {
               <TabPanel key={index}>
                 <div className="row grid">
                   {panel.map((product, index) => (
-                    <div key={index} className="col-sm-6 col-lg-4">
+                    <div key={index} className="col-sm-6 col-lg-4 product-panel">
                       <Product product={product} />
                     </div>
                   ))}

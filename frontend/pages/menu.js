@@ -382,7 +382,10 @@ const MenuPage = ({ products, categories, error }) => {
                   <div className="row gx-3">
                     {productList &&
                       productList.products.map((product, index) => (
-                        <div key={index} className="col-sm-6 col-lg-4">
+                        <div
+                          key={index}
+                          className="col-sm-6 col-lg-4 product-panel"
+                        >
                           <Product product={product} />
                         </div>
                       ))}

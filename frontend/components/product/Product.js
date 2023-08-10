@@ -13,7 +13,7 @@ const Product = ({ product }) => {
   };
 
   return (
-    <div className="box">
+    <div className="box mb-4">
       <div>
         <div className="img-box">
           <Link href={`/products/${product.slug}`}>
