@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [`${process.env.BACKEND_DOMAIN}`],
+    domains: ['burger-api.iran.liara.run','uupload.ir'],
   },
 }
 
